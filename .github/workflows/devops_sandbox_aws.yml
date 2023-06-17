@@ -1,11 +1,11 @@
 name: DevOps Sandbox AWS
 
+
 on:
   push:
     branches:
       - main
-    paths:
-      - github-actions_terraform_jenkins
+      
 
 jobs:
 
