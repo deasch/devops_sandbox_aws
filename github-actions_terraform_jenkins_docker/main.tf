@@ -1,5 +1,5 @@
 variable "aws_region" {
-   default = "us-east-2"
+   default = "eu-central-1"
 }
 
 variable "vpc_cidr_block" {
