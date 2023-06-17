@@ -1,9 +1,11 @@
-name: CI/CD
+name: CI/CD - Terraform-Jenkins
 
 on:
   push:
     branches:
       - main
+    paths:
+      - github-actions_terraform_jenkins
 
 jobs:
 
