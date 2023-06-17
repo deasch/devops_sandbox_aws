@@ -18,6 +18,10 @@ resource "aws_vpc" "aws_vpc" {
 	cidr_block = var.vpc_cidr_block
 	enable_dns_hostnames = true
 
+	lifecycle {
+		create_before_destroy = true
+	}
+
 	tags = {
 		Name = "aws_vpc"
 	}
@@ -25,6 +29,10 @@ resource "aws_vpc" "aws_vpc" {
 
 resource "aws_internet_gateway" "aws_igw" {
 	vpc_id = aws_vpc.aws_vpc.id
+
+	lifecycle {
+		create_before_destroy = true
+	}
 
 	tags = {
 		Name = "aws_igw"
@@ -36,6 +44,10 @@ resource "aws_subnet" "aws_public_subnet" {
 	cidr_block = var.public_subnet_cidr_block
 	availability_zone = data.aws_availability_zones.available.names[0]
 
+	lifecycle {
+		create_before_destroy = true
+	}
+
 	tags = {
 		Name = "aws_public_subnet_1"
 	}
@@ -43,6 +55,10 @@ resource "aws_subnet" "aws_public_subnet" {
 
 resource "aws_route_table" "aws_public_rt" {
 	vpc_id = aws_vpc.aws_vpc.id
+
+	lifecycle {
+		create_before_destroy = true
+	}
 
 	route {
 		cidr_block = "0.0.0.0/0"
@@ -53,6 +69,10 @@ resource "aws_route_table" "aws_public_rt" {
 resource "aws_route_table_association" "public" {
 	route_table_id = aws_route_table.aws_public_rt.id
 	subnet_id = aws_subnet.aws_public_subnet.id
+
+	lifecycle {
+		create_before_destroy = true
+	}
 }
 
 
