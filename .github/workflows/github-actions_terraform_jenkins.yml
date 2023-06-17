@@ -1,9 +1,6 @@
 name: GitHub Action + Terraform + Jenkins
 
 on:
-  status:
-    workflow: DevOps Sandbox AWS
-    types: success
   push:
     branches:
       - main
