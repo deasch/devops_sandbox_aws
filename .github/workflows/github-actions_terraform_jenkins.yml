@@ -19,6 +19,7 @@ jobs:
       
       
   job_02:
+    needs: job_01
     name: Configure AWS Credentials
     runs-on: ubuntu-latest
     steps:
@@ -31,6 +32,7 @@ jobs:
     
     
   job_03:
+    needs: job_02
     name: Terraform CLI
     runs-on: ubuntu.latest
     steps:
@@ -39,6 +41,7 @@ jobs:
     
     
   job_04:
+    needs: job_03
     name: Terraform Init
     runs-on: ubuntu.latest
     steps:
@@ -52,6 +55,7 @@ jobs:
         
         
   job_05:
+    needs: job_04
     name: Terraform Validate
     runs-on: ubuntu.latest
     steps:
@@ -65,6 +69,7 @@ jobs:
     
     
   job_06:
+    needs: job_05
     name: Terraform Plan
     runs-on: ubuntu.latest
     steps:
@@ -78,6 +83,7 @@ jobs:
       
        
   job_07:
+    needs: job_06
     name: Terraform Apply
     runs-on: ubuntu.latest
     steps:
@@ -91,6 +97,7 @@ jobs:
       
       
   job_08:
+    needs: job_07
     name: Terraform Destroy
     runs-on: ubuntu.latest
     steps:
