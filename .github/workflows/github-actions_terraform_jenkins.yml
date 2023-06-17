@@ -71,11 +71,11 @@ jobs:
       working-directory: 'github-actions_terraform_jenkins'
 
 
-    - name: Terraform Destroy
-      run: |
-        echo "** Running Terraform Destroy**"
-        terraform destroy -auto-approve
-      working-directory: 'github-actions_terraform_jenkins'
+    #- name: Terraform Destroy
+      #run: |
+        #echo "** Running Terraform Destroy**"
+        #terraform destroy -auto-approve
+      #working-directory: 'github-actions_terraform_jenkins'
 
 
 
