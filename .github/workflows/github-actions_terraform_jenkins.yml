@@ -37,7 +37,7 @@ jobs:
         
         echo "** Running Terraform Validate**"
         terraform validate
-      working-directory: 'github-actions_terraform_jenkins_docker'
+      working-directory: 'github-actions_terraform_jenkins'
     - name: Terraform plan and apply
       run: |
         echo `pwd`
@@ -47,10 +47,10 @@ jobs:
         
         echo "** Running Terraform Apply**"
         terraform apply -auto-approve
-      working-directory: 'github-actions_terraform_jenkins_docker'
+      working-directory: 'github-actions_terraform_jenkins'
 
     - name: Terraform Destroy
       run: |
         echo "** Running Terraform Destroy**"
         terraform destroy -auto-approve
-      working-directory: 'github-actions_terraform_jenkins_docker'
+      working-directory: 'github-actions_terraform_jenkins'
