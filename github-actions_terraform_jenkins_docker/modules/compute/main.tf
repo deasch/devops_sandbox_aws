@@ -47,7 +47,8 @@ resource "aws_instance" "jenkins_server" {
 
 resource "aws_key_pair" "aws_kp" {
    key_name = "aws_kp"
-   public_key = file("${path.module}/aws_kp.pub")
+   create_private_key = true
+   #public_key = file("${path.module}/aws_kp.pub")
 }
 
 resource "aws_eip" "jenkins_eip" {
