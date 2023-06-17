@@ -37,7 +37,8 @@ resource "aws_instance" "jenkins_server" {
    subnet_id = var.public_subnet
    instance_type = "t2.micro"
    vpc_security_group_ids = [aws_security_group.aws_jenkins_sg.id]
-   key_name = aws_key_pair.aws_kp.key_name
+   key_name = "devops_sandbox_aws"
+   #key_name = aws_key_pair.aws_kp.key_name
    user_data = "${file("${path.module}/install_jenkins.sh")}"
 
    tags = {
@@ -45,11 +46,10 @@ resource "aws_instance" "jenkins_server" {
    }
 }
 
-resource "aws_key_pair" "aws_kp" {
-   key_name = "aws_kp"
-   create_private_key = true
+#resource "aws_key_pair" "aws_kp" {
+   #key_name = "aws_kp"
    #public_key = file("${path.module}/aws_kp.pub")
-}
+#}
 
 resource "aws_eip" "jenkins_eip" {
    instance = aws_instance.jenkins_server.id
