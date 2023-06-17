@@ -1,0 +1,25 @@
+name: DevOps Sandbox AWS
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - github-actions_terraform_jenkins
+
+jobs:
+
+  aws_credentials:
+      name: AWS Connection
+      runs-on: ubuntu-latest
+      
+      steps:
+        - name: AWS User 
+          run: | 
+            echo 'aws-user: aws_sandbox_admin'
+        - name: AWS Access Key ID 
+          run: | 
+            echo 'aws-access-key-id: ' ${{ secrets.AWS_ACCESS_KEY_ID }}
+        - name: AWS Secret Access Key 
+          run: | 
+            echo 'aws-secret-access-key: ' ${{ secrets.AWS_SECRET_ACCESS_KEY }}
