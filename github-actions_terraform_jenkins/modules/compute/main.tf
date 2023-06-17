@@ -46,6 +46,10 @@ resource "aws_instance" "jenkins_server" {
    tags = {
       Name = "jenkins_server"
    }
+
+   lifecycle {
+       create_before_destroy = true
+     }
 }
 
 #resource "aws_key_pair" "aws_kp" {
