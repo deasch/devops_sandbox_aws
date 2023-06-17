@@ -1,4 +1,4 @@
-name: CI/CD - Terraform-Jenkins
+name: GitHub Action + Terraform + Jenkins
 
 on:
   status:
@@ -8,7 +8,7 @@ on:
     branches:
       - main
     paths:
-      - github-actions_terraform_jenkins_docker
+      - github-actions_terraform_jenkins
 
 
 jobs:
