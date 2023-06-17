@@ -63,8 +63,8 @@ jobs:
         terraform apply -auto-approve
       working-directory: 'github-actions_terraform_jenkins_docker'
 
-    #- name: Terraform Destroy
-      #run: |
-        #echo "** Running Terraform Destroy**"
-        #terraform destroy -auto-approve
-      #working-directory: 'github-actions_terraform_jenkins_docker'
+    - name: Terraform Destroy
+      run: |
+        echo "** Running Terraform Destroy**"
+        terraform destroy -auto-approve
+      working-directory: 'github-actions_terraform_jenkins_docker'
