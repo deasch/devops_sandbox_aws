@@ -10,47 +10,98 @@ on:
 
 jobs:
 
-
-  terraform:
-    name: Terraform Validation and Build
-    runs-on: ubuntu-latest
-
+  job_01:
+    name: Checkout Terraform Code
+    runs-on: ubuntu.latest
     steps:
-    - name: Checkout tf code in runner environment
+    - name: Checkout Terraform Code in Runner Environment
       uses: actions/checkout@v3.5.2
-
+      
+      
+  job_02:
+    name: Configure AWS Credentials
+    runs-on: ubuntu-latest
+    steps:
     - name: Configure AWS Credentials Action For GitHub Actions
       uses: aws-actions/configure-aws-credentials@v2
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-west-2
-
+        aws-region: eu-central-1
+    
+    
+  job_03:
+    name: Terraform CLI
+    runs-on: ubuntu.latest
+    steps:
     - name: Setup Terraform CLI
       uses: hashicorp/setup-terraform@v2.0.2
-
-    - name: Terraform init and validate
+    
+    
+  job_04:
+    name: Terraform Init
+    runs-on: ubuntu.latest
+    steps:
+    - name: Running Terraform init
       run: |
         echo `pwd`
+        echo "tfpath ${{ github.event.inputs.tfpath }}"  
         echo "** Running Terraform Init**"
         terraform init
+      working-directory: 'github-actions_terraform_jenkins'
         
+        
+  job_05:
+    name: Terraform Validate
+    runs-on: ubuntu.latest
+    steps:
+    - name: Running Terraform validate
+      run: |
+        echo `pwd`
+        echo "tfpath ${{ github.event.inputs.tfpath }}"  
         echo "** Running Terraform Validate**"
         terraform validate
       working-directory: 'github-actions_terraform_jenkins'
-    - name: Terraform plan and apply
+    
+    
+  job_06:
+    name: Terraform Plan
+    runs-on: ubuntu.latest
+    steps:
+    - name: Running Terraform plan
       run: |
         echo `pwd`
         echo "tfpath ${{ github.event.inputs.tfpath }}"        
         echo "** Running Terraform Plan**"
         terraform plan
-        
+      working-directory: 'github-actions_terraform_jenkins'
+      
+       
+  job_07:
+    name: Terraform Apply
+    runs-on: ubuntu.latest
+    steps:
+    - name: Running Terraform apply
+      run: |
+        echo `pwd`
+        echo "tfpath ${{ github.event.inputs.tfpath }}"
         echo "** Running Terraform Apply**"
         terraform apply -auto-approve
       working-directory: 'github-actions_terraform_jenkins'
-
-    - name: Terraform Destroy
+      
+      
+  job_08:
+    name: Terraform Destroy
+    runs-on: ubuntu.latest
+    steps:
+    - name: Running Terraform destroy
       run: |
+        echo `pwd`
+        echo "tfpath ${{ github.event.inputs.tfpath }}"
         echo "** Running Terraform Destroy**"
         terraform destroy -auto-approve
       working-directory: 'github-actions_terraform_jenkins'
+
+
+
+
