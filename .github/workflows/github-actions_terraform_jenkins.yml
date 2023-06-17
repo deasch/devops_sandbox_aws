@@ -38,13 +38,6 @@ jobs:
       uses: actions/checkout@v3.5.2
       
       
-    - name: Terraform Destroy
-      run: |
-        echo "** Running Terraform Destroy**"
-        terraform destroy -auto-approve
-      working-directory: 'github-actions_terraform_jenkins'
-
-
     - name: Configure AWS Credentials Action For GitHub Actions
       uses: aws-actions/configure-aws-credentials@v2
       with:
@@ -57,24 +50,50 @@ jobs:
       uses: hashicorp/setup-terraform@v2.0.2
 
 
-    - name: Terraform init and validate
+    - name: Terraform init
       run: |
         echo `pwd`
         echo "** Running Terraform Init**"
         terraform init
-        
+      working-directory: 'github-actions_terraform_jenkins'
+      
+      
+    - name: Terraform validate
+      run: |
+        echo `pwd`
         echo "** Running Terraform Validate**"
         terraform validate
       working-directory: 'github-actions_terraform_jenkins'
       
       
-    - name: Terraform plan and apply
+    - name: Terraform plan
       run: |
         echo `pwd`
         echo "tfpath ${{ github.event.inputs.tfpath }}"        
         echo "** Running Terraform Plan**"
         terraform plan
-        
+      working-directory: 'github-actions_terraform_jenkins'
+      
+    - name: Terraform Destroy
+      run: |
+        echo "** Running Terraform Destroy**"
+        terraform destroy -auto-approve
+      working-directory: 'github-actions_terraform_jenkins'
+      
+    
+    - name: Terraform plan
+      run: |
+        echo `pwd`
+        echo "tfpath ${{ github.event.inputs.tfpath }}"        
+        echo "** Running Terraform Plan**"
+        terraform plan
+      working-directory: 'github-actions_terraform_jenkins'
+     
+     
+    - name: Terraform apply
+      run: |
+        echo `pwd`
+        echo "tfpath ${{ github.event.inputs.tfpath }}"        
         echo "** Running Terraform Apply**"
         terraform apply -auto-approve
       working-directory: 'github-actions_terraform_jenkins'
