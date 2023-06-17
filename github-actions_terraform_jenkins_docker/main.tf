@@ -25,6 +25,11 @@ provider "aws" {
 resource "aws_default_vpc" "this" {}
 
 
+
+
+
+
+
 # security groups to enable ports
 # Security Group acts as a virtual firewall for controlling traffic of instances.
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group
@@ -79,6 +84,23 @@ resource "aws_instance" "this" {
   instance_type          = "t2.micro" # free tier
   key_name               = aws_key_pair.this.key_name # authorized the machine, so we can login later on.
   vpc_security_group_ids = [aws_security_group.this.id]
+}
+
+resource "aws_instance" "jenkins_server" {
+
+  count                   =  2
+  ami                     =  "ami-04e601abe3e1a910f"
+  instance_type           =  "t2.micro"
+  key_name                =  aws_key_pair.devops_training.key_name
+  subnet_id               =  var.public_subnet
+  vpc_security_group_ids  =  [aws_security_group.aws_jenkins_sg.id]
+  
+  user_data               =  "${file("${path.module}/install_jenkins.sh")}"
+  
+  tags = {
+    Name      = "jenkins_server"
+    Project   = "devops_sandbox_aws"
+  }
 }
 
 
