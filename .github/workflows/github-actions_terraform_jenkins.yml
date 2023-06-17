@@ -31,9 +31,18 @@ jobs:
     name: Terraform Validation and Build
     runs-on: ubuntu-latest
 
-    steps:
+    steps:    
+    
+    
     - name: Checkout tf code in runner environment
       uses: actions/checkout@v3.5.2
+      
+      
+    - name: Terraform Destroy
+      run: |
+        echo "** Running Terraform Destroy**"
+        terraform destroy -auto-approve
+      working-directory: 'github-actions_terraform_jenkins'
 
 
     - name: Configure AWS Credentials Action For GitHub Actions
