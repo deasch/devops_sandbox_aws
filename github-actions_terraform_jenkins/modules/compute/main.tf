@@ -36,6 +36,7 @@ resource "aws_instance" "jenkins_server" {
    ami = data.aws_ami.ubuntu.id
    subnet_id = var.public_subnet
    instance_type = "t2.micro"
+   count = 1
    vpc_security_group_ids = [aws_security_group.aws_jenkins_sg.id]
 
    #key_name = aws_key_pair.aws_kp.key_name
