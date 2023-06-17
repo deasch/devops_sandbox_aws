@@ -74,3 +74,11 @@ resource "aws_security_group" "aws_jenkins_sg" {
       Name = "aws_jenkins_sg"
    }
 }
+
+
+
+
+output "public_ip" {
+   description = "The public IP address of the Jenkins server"
+   value = aws_eip.jenkins_eip.public_ip
+}
