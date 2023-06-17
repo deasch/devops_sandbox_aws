@@ -2,7 +2,7 @@ name: CI/CD - Terraform-Jenkins
 
 on:
   status:
-    workflow: Test
+    workflow: DevOps Sandbox AWS
     types: success
   push:
     branches:
