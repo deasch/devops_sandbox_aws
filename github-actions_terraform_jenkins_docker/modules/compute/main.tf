@@ -1,3 +1,21 @@
+variable "public_subnet" {
+   description = "The public subnet IDs assigned to the Jenkins server"
+}
+
+variable "vpc_id" {
+   description = "ID of the VPC"
+   type        = string
+}
+
+variable "my_ip" {
+   description = "My IP address"
+   type = string
+}
+
+
+
+
+
 data "aws_ami" "ubuntu" {
    most_recent = "true"
 
@@ -74,6 +92,7 @@ resource "aws_security_group" "aws_jenkins_sg" {
       Name = "aws_jenkins_sg"
    }
 }
+
 
 
 
