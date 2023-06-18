@@ -1,6 +1,6 @@
 variable "test_workflow_version" {
    type = string
-   default = "v0.0.2"
+   default = "v0.0.1"
 }
 
 variable "aws_region" {
@@ -30,24 +30,18 @@ variable "my_ip" {
 
 
 terraform {
-   required_providers {
-      aws = {
-         source  = "hashicorp/aws"
-         version = "~> 4.0"
-      }
-   }
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.0"
+    }
+  }
 }
 
 provider "aws" {
    region = var.aws_region
    #profile = "default"
 }
-
-
-
-
-
-
 
 module "vpc" {
   source = "./modules/vpc"
