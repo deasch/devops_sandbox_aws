@@ -11,7 +11,7 @@ sudo systemctl start docker
 sudo usermod -a -G docker ec2-user
 sudo chkconfig docker on
 sudo systemctl restart docker
-docker info
+sudo docker info
 
 
 
