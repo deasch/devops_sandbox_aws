@@ -25,6 +25,10 @@ sudo docker info
 sudo mkdir -p /home/ec2-user/jenkins_data/jenkins_home
 
 
+#Create Docker Compose File
+
+
+
 
 
 
