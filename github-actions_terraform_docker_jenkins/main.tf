@@ -35,11 +35,6 @@ terraform {
          source  = "hashicorp/aws"
          version = "~> 4.0"
       }
-
-      kdocker = {
-         source  = "kreuzwerker/docker"
-         version = "~> 3.0"
-      }
    }
 }
 
@@ -48,9 +43,7 @@ provider "aws" {
    #profile = "default"
 }
 
-provider "kdocker" {
-  alias = "kreuzwerker_docker"
-}
+
 
 
 
