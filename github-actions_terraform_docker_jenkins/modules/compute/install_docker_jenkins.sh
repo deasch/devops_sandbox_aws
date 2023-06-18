@@ -2,6 +2,7 @@
 # https://medium.com/@raguyazhin/step-by-step-guide-to-install-jenkins-on-amazon-linux-bfce88dd5a9e
 # https://faun.pub/running-dockerized-jenkins-in-aws-ec2-5e11c46f9501
 # https://hackmamba.io/blog/2022/04/running-docker-in-a-jenkins-container/
+# https://yallalabs.com/devops/jenkins/how-to-build-custom-jenkins-docker-image/
 
 
 #Install Docker
@@ -26,6 +27,7 @@ sudo docker-compose --version
 
 #Create Volume for Jenkins
 sudo mkdir -p /home/ec2-user/jenkins_data/jenkins_home
+
 
 
 #Create Docker Compose File
