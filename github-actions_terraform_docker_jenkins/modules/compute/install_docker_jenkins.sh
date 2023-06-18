@@ -3,6 +3,7 @@
 # https://faun.pub/running-dockerized-jenkins-in-aws-ec2-5e11c46f9501
 # https://hackmamba.io/blog/2022/04/running-docker-in-a-jenkins-container/
 # https://yallalabs.com/devops/jenkins/how-to-build-custom-jenkins-docker-image/
+# https://klotzandrew.com/blog/deploy-an-ec2-to-run-docker-with-terraform
 
 
 #Install Docker
