@@ -1,5 +1,6 @@
 #!/bin/bash
 # https://medium.com/@raguyazhin/step-by-step-guide-to-install-jenkins-on-amazon-linux-bfce88dd5a9e
+# https://faun.pub/running-dockerized-jenkins-in-aws-ec2-5e11c46f9501
 
 
 #Install Docker
@@ -26,7 +27,42 @@ sudo mkdir -p /home/ec2-user/jenkins_data/jenkins_home
 
 
 #Create Docker Compose File
+sudo cd /home/ec2-user/jenkins_data
+sudo bash -c 'cat << EOF > /home/ec2-user/jenkins_data/docker-compose.yml
+version: "3"
 
+services:
+  jenkins:
+    container_name: jenkins
+    image: jenkins/jenkins:lts-jdk11
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    volumes:
+      - "/home/ec2-user/jenkins_data/jenkins_home:/var/jenkins_home"
+EOF'
+
+
+#Run the Docker Compose file
+sudo docker-compose up -d
+
+
+
+
+
+sudo cat > docker-compose.yml <<- "EOF"
+version: '3'
+
+services:
+  jenkins:
+    container_name: jenkins
+    image: jenkins/jenkins:lts-jdk11
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    volumes:
+      - "/home/ec2-user/jenkins_data/jenkins_home:/var/jenkins_home"
+EOF
 
 
 
