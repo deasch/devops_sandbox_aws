@@ -39,7 +39,7 @@ resource "docker_image" "jenkins" {
    
    build {
       path = "${file("${path.module}/")}"
-      dockerfile = "Dockerfile"
+      dockerfile = "jenkins_configured.Dockerfile"
    }
 }
 
