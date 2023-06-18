@@ -55,7 +55,7 @@ resource "aws_instance" "jenkins_server" {
 #}
 
 resource "aws_eip" "jenkins_eip" {
-   instance = aws_instance.jenkins_server[1].id
+   instance = aws_instance.jenkins_server[0].id
    vpc      = true
 
    tags = {
