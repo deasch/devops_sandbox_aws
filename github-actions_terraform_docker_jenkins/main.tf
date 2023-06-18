@@ -30,18 +30,29 @@ variable "my_ip" {
 
 
 terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 4.0"
-    }
-  }
+   required_providers {
+      aws = {
+         source  = "hashicorp/aws"
+         version = "~> 4.0"
+      }
+
+      docker = {
+         source  = "kreuzwerker/docker"
+         version = "~> 3.0"
+      }
+   }
 }
 
 provider "aws" {
    region = var.aws_region
    #profile = "default"
 }
+
+provider "docker" {
+  host = "unix:///var/run/docker.sock"
+}
+
+
 
 module "vpc" {
   source = "./modules/vpc"
