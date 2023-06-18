@@ -36,7 +36,7 @@ terraform {
          version = "~> 4.0"
       }
 
-      docker = {
+      kdocker = {
          source  = "kreuzwerker/docker"
          version = "~> 3.0"
       }
@@ -48,7 +48,7 @@ provider "aws" {
    #profile = "default"
 }
 
-provider "docker" {
+provider "kdocker" {
   alias = "kreuzwerker_docker"
 }
 
