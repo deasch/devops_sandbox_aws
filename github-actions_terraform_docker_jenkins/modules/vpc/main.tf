@@ -16,6 +16,23 @@ variable "my_ip" {
 
 
 
+terraform {
+   required_providers {
+      aws = {
+         source  = "hashicorp/aws"
+         version = "~> 4.0"
+      }
+   }
+}
+
+provider "aws" {
+   region = var.aws_region
+   #profile = "default"
+}
+
+
+
+
 resource "aws_instance" "jenkins_server" {
    ami = "ami-0b2ac948e23c57071"
    subnet_id = var.public_subnet
