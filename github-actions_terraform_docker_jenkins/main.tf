@@ -49,7 +49,7 @@ provider "aws" {
 }
 
 provider "docker" {
-  host = "unix:///var/run/docker.sock"
+  alias = "kreuzwerker_docker"
 }
 
 
