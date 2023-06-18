@@ -1,6 +1,6 @@
 variable "test_workflow_version" {
    type = string
-   default = "v0.0.1"
+   default = "v0.0.2"
 }
 
 variable "aws_region" {
