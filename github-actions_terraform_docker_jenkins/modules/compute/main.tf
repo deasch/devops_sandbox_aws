@@ -16,6 +16,22 @@ variable "my_ip" {
 
 
 
+terraform {
+  required_providers {
+    docker = {
+      source  = "kreuzwerker/docker"
+      version = "3.0.2"
+    }
+  }
+}
+provider "docker" {
+  alias = "kreuzwerker_docker"
+}
+
+
+
+
+
 resource "aws_instance" "jenkins_server" {
    ami = "ami-0b2ac948e23c57071"
    subnet_id = var.public_subnet
