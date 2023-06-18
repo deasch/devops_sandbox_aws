@@ -4,6 +4,7 @@
 # https://hackmamba.io/blog/2022/04/running-docker-in-a-jenkins-container/
 # https://yallalabs.com/devops/jenkins/how-to-build-custom-jenkins-docker-image/
 # https://klotzandrew.com/blog/deploy-an-ec2-to-run-docker-with-terraform
+# https://www.youtube.com/watch?v=5dhLy6kcBWQ
 
 
 #Install Docker
