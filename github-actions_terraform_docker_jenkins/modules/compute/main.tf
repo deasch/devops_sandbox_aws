@@ -16,22 +16,6 @@ variable "my_ip" {
 
 
 
-terraform {
-  required_providers {
-    docker = {
-      source  = "kreuzwerker/docker"
-      version = "3.0.2"
-    }
-  }
-}
-provider "docker" {
-  alias = "kreuzwerker_docker"
-}
-
-
-
-
-
 resource "aws_instance" "jenkins_server" {
    ami = "ami-0b2ac948e23c57071"
    subnet_id = var.public_subnet
@@ -50,15 +34,9 @@ resource "aws_instance" "jenkins_server" {
 }
 
 
-resource "docker_image" "jenkins_configured" {
-   provider     = docker.kreuzwerker_docker
-   name = "jenkins_configured"
-   
-   build {
-      path = "${file("${path.module}/")}"
-      dockerfile = "jenkins_configured.Dockerfile"
-   }
-}
+
+
+
 resource "aws_ecr_repository" "docker_ecr_repo" {
   name                 = "docker_ecr_repo"
   image_tag_mutability = "IMMUTABLE"
@@ -88,6 +66,8 @@ resource "aws_ecr_repository_policy" "demo-repo-policy" {
   }
   EOF
 } 
+
+
 
 
 #resource "aws_key_pair" "aws_kp" {
