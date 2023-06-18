@@ -16,24 +16,8 @@ variable "my_ip" {
 
 
 
-data "aws_ami" "ubuntu" {
-   most_recent = "true"
-
-   filter {
-      name = "name"
-      values = ["ubuntu/images/hvm-ssd/ubuntu-*-amd64-server-*"]
-   }
-
-   filter {
-      name = "virtualization-type"
-      values = ["hvm"]
-   }
-
-   owners = ["amazon"]
-}
-
 resource "aws_instance" "jenkins_server" {
-   ami = data.aws_ami.ubuntu.id
+   ami = "ami-0b2ac948e23c57071"
    subnet_id = var.public_subnet
    instance_type = "t2.micro"
    count = 1
