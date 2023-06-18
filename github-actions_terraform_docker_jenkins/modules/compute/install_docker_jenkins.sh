@@ -4,7 +4,7 @@
 
 
 #Install Docker
-sudo yum update
+sudo yum update -y
 sudo yum upgrade
 sudo dnf install docker -y
 sudo systemctl enable docker
