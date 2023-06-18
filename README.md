@@ -15,3 +15,5 @@ https://jaydeep2022.hashnode.dev/cicd-project-of-a-nodejs-app-with-github-jenkin
 https://www.imaginarycloud.com/blog/flask-python/
 
 https://stackoverflow.com/questions/57218553/flask-restul-basic-authentication
+
+https://api-ninjas.com/api/city
