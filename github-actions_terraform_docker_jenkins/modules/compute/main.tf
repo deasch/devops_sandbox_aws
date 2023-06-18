@@ -51,7 +51,7 @@ resource "aws_instance" "jenkins_server" {
 
 
 resource "docker_image" "jenkins_configured" {
-   provider     = kdocker.kreuzwerker_docker
+   provider     = docker.kreuzwerker_docker
    name = "jenkins_configured"
    
    build {
