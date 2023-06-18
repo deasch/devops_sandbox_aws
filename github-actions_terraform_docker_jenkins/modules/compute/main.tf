@@ -26,12 +26,23 @@ resource "aws_instance" "jenkins_server" {
    #key_name = aws_key_pair.aws_kp.key_name
    key_name = "devops_sandbox_aws"
    
-   user_data = "${file("${path.module}/install_jenkins.sh")}"
+   user_data = "${file("${path.module}/install_docker_jenkins.sh")}"
 
    tags = {
       Name = "jenkins_server"
    }
 }
+
+
+resource "docker_image" "jenkins" {
+   name = "jenkins_configured"
+   
+   build {
+      path = "${file("${path.module}/")}"
+      dockerfile = "Dockerfile"
+   }
+}
+
 
 #resource "aws_key_pair" "aws_kp" {
    #key_name = "aws_kp"
