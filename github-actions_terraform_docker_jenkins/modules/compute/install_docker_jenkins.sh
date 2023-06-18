@@ -16,10 +16,11 @@ sudo docker info
 
 
 #Install Docker Compose
-sudo curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+#sudo curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+sudo curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-'uname -s' - 'uname -m' | sudo tee /usr/local/bin/docker-compose > /dev/null
 sudo chmod +x /usr/local/bin/docker-compose
 sudo systemctl restart docker
-sudo docker info
+sudo docker-compose --version
 
 
 #Create Volume for Jenkins
@@ -27,6 +28,10 @@ sudo mkdir -p /home/ec2-user/jenkins_data/jenkins_home
 
 
 #Create Docker Compose File
+
+
+
+
 sudo cd /home/ec2-user/jenkins_data
 sudo bash -c 'cat << EOF > /home/ec2-user/jenkins_data/docker-compose.yml
 version: "3"
