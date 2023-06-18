@@ -47,6 +47,10 @@ provider "aws" {
 
 
 
+module "docker" {
+  source = "./modules/docker"
+}
+
 module "vpc" {
   source = "./modules/vpc"
 
